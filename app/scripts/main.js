@@ -83,17 +83,16 @@
     var userData = JSON.parse(this.response);
 
     var userAvatarContainer = document.querySelector('#user-avatar');
-    var img = document.createElement('img');
+    var img = document.querySelector('#user-avatar-image');
     img.setAttribute('src', userData.avatar_url);
     userAvatarContainer.appendChild(img);
 
-    var nameContainer = document.querySelector('#name');
-    var anchorElement = document.createElement('a');
-    anchorElement.setAttribute('href', githubSiteBaseUrl + githubUsername);
-    anchorElement.setAttribute('target', '_blank');
-    anchorElement.setAttribute('rel', 'noopener');
-    anchorElement.innerText = userData.name;
-    nameContainer.appendChild(anchorElement);
+    var anchorElementContainer = document.querySelector('#name');
+    anchorElementContainer.setAttribute('href',
+      githubSiteBaseUrl + githubUsername);
+    anchorElementContainer.setAttribute('target', '_blank');
+    anchorElementContainer.setAttribute('rel', 'noopener');
+    anchorElementContainer.innerText = userData.name;
 
     var hireableContainer = document.querySelector('#hirable-status');
     if (userData.hireable === true) {
@@ -113,7 +112,7 @@
 
   /**
    * make request to github api
-   * @param  {string} username to fetch data
+   * @param {string} username username to fetch
    */
   function githubUserRequest(username) {
     githubUsername = username;
@@ -123,5 +122,13 @@
     githubUserRequest.send();
   }
 
-  githubUserRequest('sudarsangp');
+  const search = document.querySelector('.search');
+  search.addEventListener('keypress', function(e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) {
+      console.log(this.value);
+      githubUserRequest(this.value);
+      e.preventDefault();
+    }
+  });
 })();
