@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "Developer Hireable",
+  "launch_path": "/index.html",
+  "description": "To check developer is available for hire on Github using username.",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "Sudarsan GP",
+    "url": "http://sudarsangp.com/"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Developer Hireable",
+      "description": "To check developer is available for hire on Github using username."
+    }
+  }
+}
